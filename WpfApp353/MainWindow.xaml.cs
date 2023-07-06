@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,17 +14,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
-namespace WpfApp353
-{
-	/// <summary>
-	/// Interaction logic for MainWindow.xaml
-	/// </summary>
-	public partial class MainWindow:Window
-	{
-		public MainWindow()
-		{
-			InitializeComponent();
-		}
-	}
-}
+using System.Xml.Linq;
+using DataAccess;
+using DataAccess.Models;
+using iTextSharp;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.Windows.Media.Media3D;
+using System.Diagnostics;
+using System.Windows.Controls.Primitives;
+using System.IO;
+using Org.BouncyCastle.Utilities.Collections;
+using System.Reflection;
+using System.Collections.ObjectModel;
+using System.Net.Mail;
+using System.Text.Json;
+using System.Net;
+using System.Text.Json.Serialization;
