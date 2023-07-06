@@ -5,8 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp353"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="600" Width="1100">
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="0*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions >
+            <ColumnDefinition Width = "*" />
+        </Grid.ColumnDefinitions >
 
+
+        <Border Name = "MainPage" Visibility = "Visible" Grid.Column = "0" Margin = "2,3,2,3" Background = "WhiteSmoke" BorderThickness = "2" BorderBrush = "Gray" >
+            <StackPanel Margin = "20" >
+                <Label VerticalContentAlignment = "Center" FontSize = "18" HorizontalContentAlignment = "Center" >Username</Label >
+                <TextBox Name="Usernametxt" Width = "200" Height = "20"  VerticalAlignment = "Center" />
+                <Label VerticalContentAlignment = "Center" FontSize = "18" HorizontalContentAlignment = "Center" >Password</Label >
+                <PasswordBox Name="Passwordtxt" Width = "200" Height = "20" HorizontalAlignment = "Center" />
+                <Button Name = "btnLogin" Width = "120" Height = "40" FontSize = "25" HorizontalAlignment = "Center" VerticalAlignment = "Center" FontFamily = "Arial" Margin = "20" Click = "btnLogin_Click" >Login</Button >
+                <Button Name = "btnSignup" Width = "120" Height = "40" FontSize = "15" HorizontalAlignment = "Center" VerticalAlignment = "Center" FontFamily = "Arial" Margin = "70" Click = "btnSignup_Click" >Signup employee</Button >
+            </StackPanel >
+        </Border >
     </Grid>
 </Window>
