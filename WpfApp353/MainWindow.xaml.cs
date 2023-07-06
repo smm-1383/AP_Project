@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -86,6 +87,60 @@ namespace WpfApp353
                 MessageBoxResult result;
 
                 result = MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);
+            }
+        }
+
+        private void btnSignupEmployee_Click(object sender, RoutedEventArgs e)
+        {
+            string[] entry = new string[] {
+                FirstNametxt.Text,
+                LastNametxt.Text,
+                PersonalIDtxt.Text,
+                Emailtxt.Text,
+                SignupUsernametxt.Text,
+                SignupPasswordtxt.Password,
+                SignupPasswordtxt2.Password,
+            };
+
+            if (!Regex.IsMatch(entry[0], "^[a-zA-Z]{3,32}$"))
+            {
+                MessageBoxResult result = MessageBox.Show("Name Format is not correct!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.Yes);
+            }
+            else if (!Regex.IsMatch(entry[1], "^[a-zA-Z]{3,32}$"))
+            {
+                MessageBoxResult result = MessageBox.Show("Last Name Format is not correct!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.Yes);
+            }
+            else if (!Regex.IsMatch(entry[2], "^\\d\\d9\\d\\d$"))
+            {
+                MessageBoxResult result = MessageBox.Show("Personal ID Format is not correct!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.Yes);
+            }
+            else if (!Regex.IsMatch(entry[3], "^\\w{3,32}@\\w{3,32}\\.\\w{2,3}$"))
+            {
+                MessageBoxResult result = MessageBox.Show("Email Format is not correct!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.Yes);
+            }
+            else if (!Regex.IsMatch(entry[5], "^(?=^\\w{8,32}$)(?=\\w*[a-z])(?=\\w*[A-Z])(?=\\w*[0-9])\\w*$"))
+            {
+                MessageBoxResult result = MessageBox.Show("Password Format is not correct!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.Yes);
+            }
+            else if (entry[5] != entry[6])
+            {
+                MessageBoxResult result = MessageBox.Show("Password doesn't match!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.Yes);
+            }
+            else
+            {
+                MessageBoxResult result = MessageBox.Show("Employee signup done!!", "Signup Success!", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.Yes);
+                Employee emp1 = new Employee()
+                {
+                    FirstName = entry[0],
+                    LastName = entry[1],
+                    Personal_ID = int.Parse(entry[2]),
+                    Email = entry[3],
+                    Username = entry[4],
+                    Password = entry[5]
+                };
+                Employees.Add(emp1);
+                MainPage.Visibility = Visibility.Visible;
+                SignupPage.Visibility = Visibility.Collapsed;
             }
         }
     }
