@@ -143,5 +143,14 @@ namespace WpfApp353
                 SignupPage.Visibility = Visibility.Collapsed;
             }
         }
+
+        private void AddCustomerbtn_Click(object sender, RoutedEventArgs e)
+        {
+            AddCustomer_LastNametxt.Focus();
+            AddCustomerPage.Visibility = Visibility.Visible;
+            MainPage.Visibility = Visibility.Collapsed;
+            SignupPage.Visibility = Visibility.Collapsed;
+            EmployeePanel.Visibility = Visibility.Collapsed;
+        }
     }
 }

@@ -46,5 +46,39 @@
                 <Button Name="btnSignupEmployee" Width = "120" Height = "40" FontSize = "15" HorizontalAlignment = "Center" VerticalAlignment = "Center" FontFamily = "Arial" Margin = "40" Click="btnSignupEmployee_Click">Signup</Button >
             </StackPanel >
         </Border >
+        <Grid Name="EmployeePanelGrid" Visibility="Collapsed">
+            <Border Name = "EmployeePanel" Grid.Column = "0" Visibility = "Collapsed" Margin = "2,3,2,3" Background = "WhiteSmoke" BorderThickness = "2" BorderBrush = "Gray" >
+                <StackPanel Margin = "20" >
+                    <Button Height = "40" Name = "AddCustomerbtn" Click="AddCustomerbtn_Click">
+                        Add customer
+                    </Button >
+                    <Button Height = "40" Name = "OrderRegisterbtn">
+                        Order registration
+                    </Button >
+                    <Button Height = "40" Name = "OrderReportbtn">
+                        Orders Report
+                    </Button >
+                    <Button Height = "40" Name = "ShowOrderbtn">
+                        Show Order
+                    </Button >
+                </StackPanel >
+            </Border >
+
+            <Border Name = "AddCustomerPage" Grid.Column = "0" Visibility = "Collapsed" Margin = "2,3,2,3" Background = "WhiteSmoke" BorderThickness = "2" BorderBrush = "Gray">
+                <StackPanel Margin = "20" >
+                    <Label VerticalContentAlignment = "Center" FontSize = "18" HorizontalContentAlignment = "Center" >First Name</Label >
+                    <TextBox Name="AddCustomer_FirstNametxt" Width = "200" Height = "20" TextAlignment = "Center" VerticalAlignment = "Center"></TextBox>
+                    <Label VerticalContentAlignment = "Center" FontSize = "18" HorizontalContentAlignment = "Center" >Last Name</Label >
+                    <TextBox Name="AddCustomer_LastNametxt" Width = "200" Height = "20" TextAlignment = "Center" VerticalAlignment = "Center" />
+                    <Label VerticalContentAlignment = "Center" FontSize = "18" HorizontalContentAlignment = "Center" >ID</Label >
+                    <TextBox Name="AddCustomer_IDtxt" Width = "200" Height = "20" TextAlignment = "Center" VerticalAlignment = "Center" />
+                    <Label VerticalContentAlignment = "Center" FontSize = "18" HorizontalContentAlignment = "Center" >Email</Label >
+                    <TextBox Name="AddCustomer_Emailtxt" Width = "200" Height = "20" TextAlignment = "Center" VerticalAlignment = "Center" />
+                    <Label VerticalContentAlignment = "Center" FontSize = "18" HorizontalContentAlignment = "Center" >Phone Number</Label >
+                    <TextBox Name="AddCustomer_Phonetxt" Width = "200" Height = "20" TextAlignment = "Center" VerticalAlignment = "Center" />
+                    <Button Name="btnSignupCustomer" Width = "120" Height = "40" FontSize = "15" HorizontalAlignment = "Center" VerticalAlignment = "Center" FontFamily = "Arial" Margin = "40">Signup</Button >
+                </StackPanel >
+            </Border >
+        </Grid>
     </Grid>
 </Window>
