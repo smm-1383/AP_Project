@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -151,6 +152,28 @@ namespace WpfApp353
             MainPage.Visibility = Visibility.Collapsed;
             SignupPage.Visibility = Visibility.Collapsed;
             EmployeePanel.Visibility = Visibility.Collapsed;
+        }
+
+        private void RegisterOrderbtn_Click(object sender, RoutedEventArgs e)
+        {
+            bool hasCustomer = Customers.Any(x => x.ID == RegisterOrder_CustomerIdtxt.Text);
+            if (hasCustomer)
+            {
+                FoundCust_Order_reg = Customers.First(x => x.ID == RegisterOrder_CustomerIdtxt.Text);
+                EmployeePanelGrid.Visibility = Visibility.Visible;
+                EmployeePanel.Visibility = Visibility.Collapsed;
+                RegisterOrderPage.Visibility = Visibility.Collapsed;
+                AddCustomerPage.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                MessageBox.Show("Customer not found!\nFirst signup this customer!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.Yes);
+                AddCustomerPage.Visibility = Visibility.Visible;
+                RegisterOrderPage.Visibility = Visibility.Collapsed;
+                MainPage.Visibility = Visibility.Collapsed;
+                SignupPage.Visibility = Visibility.Collapsed;
+                EmployeePanel.Visibility = Visibility.Collapsed;
+            }
         }
     }
 }

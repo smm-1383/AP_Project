@@ -79,6 +79,16 @@
                     <Button Name="btnSignupCustomer" Width = "120" Height = "40" FontSize = "15" HorizontalAlignment = "Center" VerticalAlignment = "Center" FontFamily = "Arial" Margin = "40">Signup</Button >
                 </StackPanel >
             </Border >
+
+            <Border Name = "RegisterOrderPage" Visibility = "Collapsed" Margin = "2,3,2,3" BorderThickness = "2" BorderBrush = "Gray">
+                <StackPanel >
+                    <Label Margin = "20" FontSize = "23" HorizontalAlignment = "Center" >Enter Customer ID</Label>
+                    <TextBox Width = "200" Height= "50" Name= "RegisterOrder_CustomerIdtxt" FontSize="25"/>
+                    <Button Name="RegisterOrderbtn" FontSize= "23" Margin= "70" Width= "200" Click="RegisterOrderbtn_Click">
+                        Register Order
+                    </Button>
+                </StackPanel>
+            </Border>
         </Grid>
     </Grid>
 </Window>
