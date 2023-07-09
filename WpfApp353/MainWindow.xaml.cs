@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -353,6 +355,58 @@ namespace WpfApp353
 			{
 				MessageBox.Show("Order not found!");
 			}
+		}
+		private void SubmitPckgStatusbtn_Click(object sender, RoutedEventArgs e)
+		{
+			Product product = Products.First(x => x.ID == int.Parse(OrderIdtxt.Text));
+			switch (Paktypefilteredcombo_emp.Text)
+			{
+				case "Registered":
+					product.status = Status.Registered;
+					MessageBox.Show("Submited");
+					break;
+				case "Ready To Send":
+					product.status = Status.Ready_to_send;
+					MessageBox.Show("Submited");
+					break;
+				case "Sending":
+					product.status = Status.Sending;
+					MessageBox.Show("Submited");
+					break;
+				case "Delivered":
+					product.status = Status.Delivered;
+					Paktypefilteredcombo_emp.IsEnabled = false;
+
+					try
+					{
+						var from = "SaeedMahziar@gmail.com";
+						var frompass = "iapuanrgjophwizf";
+						var Message = new MailMessage();
+						Message.From = new MailAddress(from);
+						Message.Subject = "Subj";
+						Message.To.Add(new MailAddress(product.sender.Email));
+						Message.Body = $"<html><Body> Hi!<br>Your package with id: ( {product.ID} ) Delivered!.<br>Sender: {product.sender.FirstName} {product.sender.LastName} <br>You can submit your feedback! </body><html>";
+						Message.IsBodyHtml = true;
+						var smtpcl = new SmtpClient("smtp.gmail.com")
+						{
+							Port = 587,
+							Credentials = new NetworkCredential(from, frompass),
+							EnableSsl = true,
+						};
+						smtpcl.Send(Message);
+					}
+					catch
+					{
+						MessageBox.Show("The email didn't send successfully.\nif you're sure about your email's correction, check internet and try again later.", "Signup Failed!", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.Yes);
+					}
+
+					MessageBox.Show("Submited");
+					break;
+				default:
+					MessageBox.Show("Please select an item!");
+					break;
+			}
+			//***Dump();
 		}
 	}
 }

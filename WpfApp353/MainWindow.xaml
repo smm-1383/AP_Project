@@ -152,6 +152,34 @@
                 </StackPanel>
             </Border>
 
+            <Border Name = "ShowOrderPage" Visibility = "Collapsed" Margin = "2,3,2,3" BorderThickness = "2" BorderBrush = "Gray">
+                <StackPanel Margin="10">
+                    <DataGrid Width="600" Margin="30" Name="ProductsGrid" ColumnWidth="*" CanUserAddRows="False" MinColumnWidth="100" CanUserResizeRows="True" IsReadOnly="True">
+
+                    </DataGrid>
+                    <Label VerticalContentAlignment= "Center" FontSize= "18" HorizontalContentAlignment= "Center" >Package Status</Label>
+                    <ComboBox Name="Paktypefilteredcombo_emp" Width = "150" Height= "25" >
+                        <ComboBox.Style>
+                            <Style TargetType="ComboBox">
+                                <Setter Property="IsEnabled" Value="True" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Text, ElementName=TheTextBox}">
+                                        <Setter Property="IsEnabled" Value="False" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ComboBox.Style>
+                        <ComboBoxItem>Registered</ComboBoxItem >
+                        <ComboBoxItem>Ready To Send</ComboBoxItem>
+                        <ComboBoxItem>Sending</ComboBoxItem>
+                        <ComboBoxItem>Delivered</ComboBoxItem>
+                    </ComboBox>
+                    <Button Name="SubmitPckgStatusbtn" Margin="10" Width="60" Click="SubmitPckgStatusbtn_Click">
+                        Submit
+                    </Button>
+                </StackPanel>
+            </Border>
+
         </Grid>
     </Grid>
 </Window>
