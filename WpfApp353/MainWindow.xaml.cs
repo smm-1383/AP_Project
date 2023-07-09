@@ -319,6 +319,40 @@ namespace WpfApp353
 			OrderIdtxt.SelectionStart = OrderIdtxt.Text.Length;
 			OrderIdtxt.SelectionLength = 0;
 		}
+		private void ShowOrderInfobtn_Click(object sender, RoutedEventArgs e)
+		{
+			if (Products.Any(x => x.ID == int.Parse(OrderIdtxt.Text) == true))
+			{
+				Product product = Products.First(x => x.ID == int.Parse(OrderIdtxt.Text));
+				if (product.status == Status.Delivered)
+				{
+					Paktypefilteredcombo_emp.IsEnabled = false;
+				}
+				else
+				{
+					Paktypefilteredcombo_emp.IsEnabled = true;
+				}
 
+				try
+				{
+					ProductsGrid.ItemsSource = Products.Where(x => x.ID == int.Parse(OrderIdtxt.Text));
+
+				}
+				catch
+				{
+					MessageBox.Show("Action can't be completed!");
+				}
+				EmployeePanelGrid.Visibility = Visibility.Visible;
+				ShowOrderPage.Visibility = Visibility.Visible;
+				GetOrderIDPage.Visibility = Visibility.Collapsed;
+				MainPage.Visibility = Visibility.Collapsed;
+				SignupPage.Visibility = Visibility.Collapsed;
+				EmployeePanel.Visibility = Visibility.Collapsed;
+			}
+			else
+			{
+				MessageBox.Show("Order not found!");
+			}
+		}
 	}
 }
