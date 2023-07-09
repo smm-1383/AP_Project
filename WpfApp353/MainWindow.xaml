@@ -1,11 +1,12 @@
-﻿<Window x:Class="WpfApp353.MainWindow"
+﻿<Window x:Class="WpfApp343.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfApp353"
+        xmlns:local="clr-namespace:WpfApp343"
+        ResizeMode = "NoResize"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1100">
+        Title="Post App" Height="600" Width="1100" >
     <Grid >
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -52,13 +53,13 @@
                     <Button Height = "40" Name = "AddCustomerbtn" Click="AddCustomerbtn_Click">
                         Add customer
                     </Button >
-                    <Button Height = "40" Name = "OrderRegisterbtn">
+                    <Button Height = "40" Name = "OrderRegisterbtn" Click="OrderRegisterbtn_Click">
                         Order registration
                     </Button >
-                    <Button Height = "40" Name = "OrderReportbtn">
+                    <Button Height = "40" Name = "OrderReportbtn" Click = "OrderReportbtn_Click" >
                         Orders Report
                     </Button >
-                    <Button Height = "40" Name = "ShowOrderbtn">
+                    <Button Height = "40" Name = "ShowOrderbtn" Click = "ShowOrderbtn_Click" >
                         Show Order
                     </Button >
                 </StackPanel >
@@ -76,7 +77,7 @@
                     <TextBox Name="AddCustomer_Emailtxt" Width = "200" Height = "20" TextAlignment = "Center" VerticalAlignment = "Center" />
                     <Label VerticalContentAlignment = "Center" FontSize = "18" HorizontalContentAlignment = "Center" >Phone Number</Label >
                     <TextBox Name="AddCustomer_Phonetxt" Width = "200" Height = "20" TextAlignment = "Center" VerticalAlignment = "Center" />
-                    <Button Name="btnSignupCustomer" Width = "120" Height = "40" FontSize = "15" HorizontalAlignment = "Center" VerticalAlignment = "Center" FontFamily = "Arial" Margin = "40">Signup</Button >
+                    <Button Name="btnSignupCustomer" Width = "120" Height = "40" FontSize = "15" HorizontalAlignment = "Center" VerticalAlignment = "Center" FontFamily = "Arial" Margin = "40" Click="btnSignupCustomer_Click">Signup</Button >
                 </StackPanel >
             </Border >
 
@@ -89,6 +90,7 @@
                     </Button>
                 </StackPanel>
             </Border>
+
 
             <ScrollViewer Name="ScrollBar" Visibility = "Collapsed" >
                 <Border Name = "RegisterOrderPanel" Visibility="Collapsed" Margin = "2,3,2,3" BorderThickness = "2" BorderBrush = "Gray">
@@ -142,6 +144,7 @@
                 </Border>
             </ScrollViewer>
 
+
             <Border Name = "GetOrderIDPage" Visibility = "Collapsed" Margin = "2,3,2,3" BorderThickness = "2" BorderBrush = "Gray">
                 <StackPanel >
                     <Label Margin = "20" FontSize = "23" HorizontalAlignment = "Center" >Enter Order ID</Label>
@@ -178,6 +181,8 @@
                         Submit
                     </Button>
                 </StackPanel>
+
+
             </Border>
 
             <Border Name = "OrderReportPage" Visibility= "Collapsed" Margin = "2,3,2,3" BorderThickness = "2" BorderBrush = "Gray">
@@ -218,6 +223,7 @@
                         </StackPanel>
                     </Border>
                 </Grid>
+
             </Border>
             <Button Name="EmployeeMainPanel" Margin="20" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="70" Height="25" Click="EmployeeMainPanel_Click">
                 Main Panel
@@ -226,6 +232,8 @@
                 Login Page
             </Button>
         </Grid>
+
+
 
 
 
@@ -247,132 +255,139 @@
                     </Button>
                 </StackPanel>
             </Border>
-        </Grid>
-        
-        <Grid Name="WalletPage" Visibility= "Collapsed" >
-            <Border Name= "ChargePanel" Margin= "20" BorderThickness= "4" BorderBrush= "WhiteSmoke" HorizontalAlignment= "Right" Width= "200" >
-                <StackPanel Margin= "3" >
-                    <Label HorizontalAlignment="Center" Margin="0,20,0,0"  FontSize="20">
-                        Card Number
-                    </Label>
-                    <TextBox Width="140" HorizontalAlignment="Center" Margin="0,0,0,0" Name="Cardtxt" TextChanged="Cardtxt_TextChanged"/>
-                    <Label HorizontalAlignment="Center" Margin="35,20,20,5" FontSize="20">
-                        Expire date
-                    </Label>
-                    <DockPanel >
-                        <Label HorizontalAlignment="Left" Margin="20,0,0,0" FontSize="20">
-                            Y
-                        </Label>
-                        <TextBox Width="32" Height="30" HorizontalAlignment="Left" Margin="5,0,0,0" Name="Yeartxt" TextChanged="Yeartxt_TextChanged"/>
-                        <Label HorizontalAlignment="Left" Margin="20,0,0,0" FontSize="20">
-                            M
-                        </Label>
-                        <TextBox Width="30" Height="30" HorizontalAlignment="Left" Margin="10,0,0,0" Name="Monthtxt" TextChanged="Monthtxt_TextChanged"/>
-                    </DockPanel>
-                    <Label HorizontalAlignment="Center" Margin="0,20,0,0" FontSize="20">
-                        CVV2
-                    </Label>
-                    <TextBox Width="140" HorizontalAlignment="Center" Margin="0,0,0,0" Name="CVVtxt" TextChanged="CVVtxt_TextChanged"/>
-                    <Label HorizontalAlignment="Center" Margin="0,20,0,0" FontSize="20">
-                        Amount
-                    </Label>
-                    <TextBox Width="140" HorizontalAlignment="Center" Margin="0,0,0,0" Name="Chargetxt" TextChanged="Chargetxt_TextChanged"/>
-                    <Button Width="80" HorizontalAlignment="Center" Name="Chargetbtn" Margin="40" Click="Chargebtn_Click">
-                        Charge
-                    </Button>
-                </StackPanel>
-            </Border >
 
-            <Border Margin= "20" BorderThickness= "4" BorderBrush= "WhiteSmoke" Width= "825" HorizontalAlignment= "Left" >
-                <StackPanel>
-                    <DockPanel Margin="20">
-                        <Label FontSize="30">
-                            Wallet:
-                        </Label>
-                        <Label Name="CurrentAmountlbl" Content="---" FontSize="30" Margin="10,0,0,0">
-
-                        </Label>
-                    </DockPanel>
-                </StackPanel>
-            </Border>
-        
-
-        <Border Name = "OrderReportPage_cust" Visibility= "Collapsed" Margin = "2,3,2,3" BorderThickness = "2" BorderBrush = "Gray">
-            <Grid>
-                <Border Name= "FilteringPanel_cust" Margin= "20" BorderThickness= "4" BorderBrush= "WhiteSmoke" HorizontalAlignment= "Right" Width= "200" >
+            <Grid Name="WalletPage" Visibility= "Collapsed" >
+                <Border Name= "ChargePanel" Margin= "20" BorderThickness= "4" BorderBrush= "WhiteSmoke" HorizontalAlignment= "Right" Width= "200" >
                     <StackPanel Margin= "3" >
-                        <Label VerticalContentAlignment= "Center" FontSize= "18" HorizontalContentAlignment= "Center" >User id</Label>
-                        <TextBox Name="UserIdfilteredtxt_cust" Width = "150" Height= "20" TextAlignment= "Center" VerticalAlignment= "Center" />
-                        <Label VerticalContentAlignment= "Center" FontSize= "18" HorizontalContentAlignment= "Center" >Package Status</Label>
-                        <ComboBox Name="Paktypefilteredcombo_cust" Width = "150" Height= "25" >
-                            <ComboBoxItem >Registered</ComboBoxItem >
-                            <ComboBoxItem >Ready To Send</ComboBoxItem>
-                            <ComboBoxItem>Sending</ComboBoxItem>
-                            <ComboBoxItem>Delivered</ComboBoxItem>
-                        </ComboBox>
-                        <Label VerticalContentAlignment = "Center" FontSize= "18" HorizontalContentAlignment= "Center" >Price</Label >
-                        <TextBox Width= "150" Height= "20" TextAlignment= "Center" VerticalAlignment= "Center" />
-                        <Label VerticalContentAlignment= "Center" FontSize= "18" HorizontalContentAlignment= "Center" >Weight</Label >
-                        <TextBox Name="WeightFilteredtxt_cust" Width= "150" Height= "20" TextAlignment= "Center" VerticalAlignment= "Center" />
-                        <Label VerticalContentAlignment= "Center" FontSize= "18" HorizontalContentAlignment= "Center" >Posting Type</Label>
-                        <ComboBox Name="postypefilteredcombo_cust" Width = "150" Height= "25" >
-                            <ComboBoxItem >Pishtaz</ComboBoxItem >
-                            <ComboBoxItem IsSelected= "True" >Normal</ComboBoxItem >
-                        </ComboBox >
-                        <Button Margin= "30" Name="Search_Filteredbtn_cust" Click="Search_Filteredbtn_Click">
-                            Search
-                        </Button >
-                    </StackPanel >
+                        <Label HorizontalAlignment="Center" Margin="0,20,0,0"  FontSize="20">
+                            Card Number
+                        </Label>
+                        <TextBox Width="140" HorizontalAlignment="Center" Margin="0,0,0,0" Name="Cardtxt" TextChanged="Cardtxt_TextChanged"/>
+                        <Label HorizontalAlignment="Center" Margin="35,20,20,5" FontSize="20">
+                            Expire date
+                        </Label>
+                        <DockPanel >
+                            <Label HorizontalAlignment="Left" Margin="20,0,0,0" FontSize="20">
+                                Y
+                            </Label>
+                            <TextBox Width="32" Height="30" HorizontalAlignment="Left" Margin="5,0,0,0" Name="Yeartxt" TextChanged="Yeartxt_TextChanged"/>
+                            <Label HorizontalAlignment="Left" Margin="20,0,0,0" FontSize="20">
+                                M
+                            </Label>
+                            <TextBox Width="30" Height="30" HorizontalAlignment="Left" Margin="10,0,0,0" Name="Monthtxt" TextChanged="Monthtxt_TextChanged"/>
+                        </DockPanel>
+                        <Label HorizontalAlignment="Center" Margin="0,20,0,0" FontSize="20">
+                            CVV2
+                        </Label>
+                        <TextBox Width="140" HorizontalAlignment="Center" Margin="0,0,0,0" Name="CVVtxt" TextChanged="CVVtxt_TextChanged"/>
+                        <Label HorizontalAlignment="Center" Margin="0,20,0,0" FontSize="20">
+                            Amount
+                        </Label>
+                        <TextBox Width="140" HorizontalAlignment="Center" Margin="0,0,0,0" Name="Chargetxt" TextChanged="Chargetxt_TextChanged"/>
+                        <Button Width="80" HorizontalAlignment="Center" Name="Chargetbtn" Margin="40" Click="Chargebtn_Click">
+                            Charge
+                        </Button>
+                    </StackPanel>
                 </Border >
 
-                <Border Name= "FilteredItemsPanel_cust" Margin= "20" BorderThickness= "4" BorderBrush= "WhiteSmoke" Width= "825" HorizontalAlignment= "Left" >
-
+                <Border Margin= "20" BorderThickness= "4" BorderBrush= "WhiteSmoke" Width= "825" HorizontalAlignment= "Left" >
                     <StackPanel>
-                        <Label FontSize= "34" Margin= "80" >This is Filtered Items Panel for customer</Label>
-                        <DataGrid Margin="5" Name="ProductsGrid_cust" ColumnWidth="*" CanUserAddRows="False" MinColumnWidth="100" CanUserResizeRows="True" SelectionChanged="EmployeesGrid_SelectionChanged" IsReadOnly="True">
+                        <DockPanel Margin="20">
+                            <Label FontSize="30">
+                                Wallet:
+                            </Label>
+                            <Label Name="CurrentAmountlbl" Content="---" FontSize="30" Margin="10,0,0,0">
 
-                        </DataGrid>
+                            </Label>
+                        </DockPanel>
                     </StackPanel>
                 </Border>
+
+
+
             </Grid>
-        </Border>
+            <Border Name = "OrderReportPage_cust" Visibility= "Collapsed" Margin = "2,3,2,3" BorderThickness = "2" BorderBrush = "Gray">
+                <Grid>
+                    <Border Name= "FilteringPanel_cust" Margin= "20" BorderThickness= "4" BorderBrush= "WhiteSmoke" HorizontalAlignment= "Right" Width= "200" >
+                        <StackPanel Margin= "3" >
+                            <Label VerticalContentAlignment= "Center" FontSize= "18" HorizontalContentAlignment= "Center" >User id</Label>
+                            <TextBox Name="UserIdfilteredtxt_cust" Width = "150" Height= "20" TextAlignment= "Center" VerticalAlignment= "Center" />
+                            <Label VerticalContentAlignment= "Center" FontSize= "18" HorizontalContentAlignment= "Center" >Package Status</Label>
+                            <ComboBox Name="Paktypefilteredcombo_cust" Width = "150" Height= "25" >
+                                <ComboBoxItem >Registered</ComboBoxItem >
+                                <ComboBoxItem >Ready To Send</ComboBoxItem>
+                                <ComboBoxItem>Sending</ComboBoxItem>
+                                <ComboBoxItem>Delivered</ComboBoxItem>
+                            </ComboBox>
+                            <Label VerticalContentAlignment = "Center" FontSize= "18" HorizontalContentAlignment= "Center" >Price</Label >
+                            <TextBox Width= "150" Height= "20" TextAlignment= "Center" VerticalAlignment= "Center" />
+                            <Label VerticalContentAlignment= "Center" FontSize= "18" HorizontalContentAlignment= "Center" >Weight</Label >
+                            <TextBox Name="WeightFilteredtxt_cust" Width= "150" Height= "20" TextAlignment= "Center" VerticalAlignment= "Center" />
+                            <Label VerticalContentAlignment= "Center" FontSize= "18" HorizontalContentAlignment= "Center" >Posting Type</Label>
+                            <ComboBox Name="postypefilteredcombo_cust" Width = "150" Height= "25" >
+                                <ComboBoxItem >Pishtaz</ComboBoxItem >
+                                <ComboBoxItem IsSelected= "True" >Normal</ComboBoxItem >
+                            </ComboBox >
+                            <Button Margin= "30" Name="Search_Filteredbtn_cust" Click="Search_Filteredbtn_Click">
+                                Search
+                            </Button >
+                        </StackPanel >
+                    </Border >
 
-        <Border Name = "GetOrderIDPage_cust" Visibility = "Collapsed" Margin = "2,3,2,3" BorderThickness = "2" BorderBrush = "Gray">
-            <StackPanel >
-                <Label Margin = "20" FontSize = "23" HorizontalAlignment = "Center" >Enter Order ID</Label>
-                <TextBox Width = "200" Height= "50" Name= "OrderIdtxt_cust" TextChanged="OrderIdtxt_TextChanged"/>
-                <Button Name="ShowOrderInfobtn_cust" FontSize= "23" Margin= "70" Width= "200" Click="ShowOrderInfobtn_cust_Click">
-                    Show Information
-                </Button>
-            </StackPanel>
-        </Border>
+                    <Border Name= "FilteredItemsPanel_cust" Margin= "20" BorderThickness= "4" BorderBrush= "WhiteSmoke" Width= "825" HorizontalAlignment= "Left" >
 
-        <Border Name = "ShowOrderPage_cust" Visibility = "Collapsed" Margin = "2,3,2,3" BorderThickness = "2" BorderBrush = "Gray" Background="WhiteSmoke">
-            <StackPanel>
-                <DataGrid Width="600" Margin="30" Name="SingleProductGrid_cust" ColumnWidth="*" CanUserAddRows="False" MinColumnWidth="100" CanUserResizeRows="True" IsReadOnly="True">
+                        <StackPanel>
+                            <Label FontSize= "34" Margin= "80" >This is Filtered Items Panel for customer</Label>
+                            <DataGrid Margin="5" Name="ProductsGrid_cust" ColumnWidth="*" CanUserAddRows="False" MinColumnWidth="100" CanUserResizeRows="True" SelectionChanged="EmployeesGrid_SelectionChanged" IsReadOnly="True">
 
-                </DataGrid>
-                <StackPanel Name="feedbackGrid" Visibility="Collapsed">
-                    <Label Margin = "20" FontSize = "19" HorizontalAlignment = "Center" >Enter Your Feedback</Label>
-                    <TextBox Name="feedbacktxt" Width="600" Height="200">
+                            </DataGrid>
+                        </StackPanel>
+                    </Border>
 
-                    </TextBox>
-                    <Button Name="Submitfeedbackbtn" Margin="10" Width="60" Click="Submitfeedbackbtn_Click">
-                        Submit
+                </Grid>
+
+            </Border>
+
+            <Border Name = "GetOrderIDPage_cust" Visibility = "Collapsed" Margin = "2,3,2,3" BorderThickness = "2" BorderBrush = "Gray">
+                <StackPanel >
+                    <Label Margin = "20" FontSize = "23" HorizontalAlignment = "Center" >Enter Order ID</Label>
+                    <TextBox Width = "200" Height= "50" Name= "OrderIdtxt_cust" TextChanged="OrderIdtxt_TextChanged"/>
+                    <Button Name="ShowOrderInfobtn_cust" FontSize= "23" Margin= "70" Width= "200" Click="ShowOrderInfobtn_cust_Click">
+                        Show Information
                     </Button>
                 </StackPanel>
-            </StackPanel>
-        </Border>
+            </Border>
 
-        <Border Name="ChgPanel" Visibility = "Collapsed" Margin = "2,3,2,3" BorderThickness = "2" BorderBrush = "Gray">
-            <StackPanel>
-                <Label Margin = "20" FontSize = "23" HorizontalAlignment = "Center" >Enter New Username</Label>
-                <TextBox Width = "200" Height= "50" Name= "NewUsernametxt" TextChanged="OrderIdtxt_TextChanged"/>
-                <Label Margin = "20" FontSize = "23" HorizontalAlignment = "Center" >Enter New Password</Label>
-                <TextBox Width = "200" Height= "50" Name= "NewPasstxt" TextChanged="OrderIdtxt_TextChanged"/>
-            </StackPanel>
-        </Border>
-        
+            <Border Name = "ShowOrderPage_cust" Visibility = "Collapsed" Margin = "2,3,2,3" BorderThickness = "2" BorderBrush = "Gray" Background="WhiteSmoke">
+                <StackPanel>
+                    <DataGrid Width="600" Margin="30" Name="SingleProductGrid_cust" ColumnWidth="*" CanUserAddRows="False" MinColumnWidth="100" CanUserResizeRows="True" IsReadOnly="True">
+
+                    </DataGrid>
+                    <StackPanel Name="feedbackGrid" Visibility="Collapsed">
+                        <Label Margin = "20" FontSize = "19" HorizontalAlignment = "Center" >Enter Your Feedback</Label>
+                        <TextBox Name="feedbacktxt" Width="600" Height="200">
+
+                        </TextBox>
+                        <Button Name="Submitfeedbackbtn" Margin="10" Width="60" Click="Submitfeedbackbtn_Click">
+                            Submit
+                        </Button>
+                    </StackPanel>
+
+                </StackPanel>
+            </Border>
+
+            <Border Name="ChgPanel" Visibility = "Collapsed" Margin = "2,3,2,3" BorderThickness = "2" BorderBrush = "Gray">
+                <StackPanel >
+                    <Label Margin = "20" FontSize = "23" HorizontalAlignment = "Center" >Enter New Username</Label>
+                    <TextBox Width = "200" Height= "50" Name= "NewUsernametxt" TextChanged="OrderIdtxt_TextChanged"/>
+                    <Label Margin = "20" FontSize = "23" HorizontalAlignment = "Center" >Enter New Password</Label>
+                    <TextBox Width = "200" Height= "50" Name= "NewPasstxt" TextChanged="OrderIdtxt_TextChanged"/>
+                    <Label Margin = "20" FontSize = "23" HorizontalAlignment = "Center" >Repeat New Password</Label>
+                    <TextBox Width = "200" Height= "50" Name= "RepPasstxt" TextChanged="OrderIdtxt_TextChanged"/>
+                    <Button Width="150" Height="30" Margin="70" Name="chngupbtn" Click="chngupbtn_Click">Change user and pass</Button>
+                </StackPanel>
+            </Border>
+
             <Button Name="CustomerMainPanel" Margin="20" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="70" Height="25" Click="CustomerMaiPanel_Click">
                 Main Panel
             </Button>
@@ -380,6 +395,8 @@
                 Login Page
             </Button>
         </Grid>
-        
+
+
+
     </Grid>
 </Window>
