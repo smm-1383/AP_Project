@@ -337,5 +337,32 @@
             </Grid>
         </Border>
 
+        <Border Name = "GetOrderIDPage_cust" Visibility = "Collapsed" Margin = "2,3,2,3" BorderThickness = "2" BorderBrush = "Gray">
+            <StackPanel >
+                <Label Margin = "20" FontSize = "23" HorizontalAlignment = "Center" >Enter Order ID</Label>
+                <TextBox Width = "200" Height= "50" Name= "OrderIdtxt_cust" TextChanged="OrderIdtxt_TextChanged"/>
+                <Button Name="ShowOrderInfobtn_cust" FontSize= "23" Margin= "70" Width= "200" Click="ShowOrderInfobtn_cust_Click">
+                    Show Information
+                </Button>
+            </StackPanel>
+        </Border>
+
+        <Border Name = "ShowOrderPage_cust" Visibility = "Collapsed" Margin = "2,3,2,3" BorderThickness = "2" BorderBrush = "Gray" Background="WhiteSmoke">
+            <StackPanel>
+                <DataGrid Width="600" Margin="30" Name="SingleProductGrid_cust" ColumnWidth="*" CanUserAddRows="False" MinColumnWidth="100" CanUserResizeRows="True" IsReadOnly="True">
+
+                </DataGrid>
+                <StackPanel Name="feedbackGrid" Visibility="Collapsed">
+                    <Label Margin = "20" FontSize = "19" HorizontalAlignment = "Center" >Enter Your Feedback</Label>
+                    <TextBox Name="feedbacktxt" Width="600" Height="200">
+
+                    </TextBox>
+                    <Button Name="Submitfeedbackbtn" Margin="10" Width="60" Click="Submitfeedbackbtn_Click">
+                        Submit
+                    </Button>
+                </StackPanel>
+
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>

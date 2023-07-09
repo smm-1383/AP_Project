@@ -709,5 +709,36 @@ namespace WpfApp353
 					break;
 			}
 		}
-	}
+
+        private void ShowOrderInfobtn_cust_Click(object sender, RoutedEventArgs e)
+        {
+            if (Products.Where(x => x.sender == found_cust && x.ID == int.Parse(OrderIdtxt_cust.Text)).Count() != 0)
+            {
+                SingleProductGrid_cust.ItemsSource = Products.Where(x => x.sender == found_cust).Where(x => x.ID == int.Parse(OrderIdtxt_cust.Text));
+                //###### sender name in Grid has error ######//
+                Product product = Products.First(x => x.ID == int.Parse(OrderIdtxt_cust.Text));
+                if (product.status == Status.Delivered)
+                {
+                    feedbackGrid.Visibility = Visibility.Visible;
+                }
+                ShowOrderPage_cust.Visibility = Visibility.Visible;
+                GetOrderIDPage.Visibility = Visibility.Collapsed;
+                CustomerPanel.Visibility = Visibility.Collapsed;
+                MainPage.Visibility = Visibility.Collapsed;
+                SignupPage.Visibility = Visibility.Collapsed;
+                EmployeePanel.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                MessageBox.Show("Order not found in your feed!");
+            }
+        }
+
+        private void Submitfeedbackbtn_Click(object sender, RoutedEventArgs e)
+        {
+            Product product = Products.First(x => x.ID == int.Parse(OrderIdtxt_cust.Text));
+            product.feedback = feedbacktxt.Text;
+            MessageBox.Show("Feedback Submited!");
+        }
+    }
 }
