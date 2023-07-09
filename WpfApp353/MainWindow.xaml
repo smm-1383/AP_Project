@@ -5,8 +5,153 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp353"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="600" Width="1100">
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="0*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions >
+            <ColumnDefinition Width = "*" />
+        </Grid.ColumnDefinitions >
 
+
+        <Border Name = "MainPage" Visibility = "Visible" Grid.Column = "0" Margin = "2,3,2,3" Background = "WhiteSmoke" BorderThickness = "2" BorderBrush = "Gray" >
+            <StackPanel Margin = "20" >
+                <Label VerticalContentAlignment = "Center" FontSize = "18" HorizontalContentAlignment = "Center" >Username</Label >
+                <TextBox Name="Usernametxt" Width = "200" Height = "20"  VerticalAlignment = "Center" />
+                <Label VerticalContentAlignment = "Center" FontSize = "18" HorizontalContentAlignment = "Center" >Password</Label >
+                <PasswordBox Name="Passwordtxt" Width = "200" Height = "20" HorizontalAlignment = "Center" />
+                <Button Name = "btnLogin" Width = "120" Height = "40" FontSize = "25" HorizontalAlignment = "Center" VerticalAlignment = "Center" FontFamily = "Arial" Margin = "20" Click = "btnLogin_Click" >Login</Button >
+                <Button Name = "btnSignup" Width = "120" Height = "40" FontSize = "15" HorizontalAlignment = "Center" VerticalAlignment = "Center" FontFamily = "Arial" Margin = "70" Click = "btnSignup_Click" >Signup employee</Button >
+            </StackPanel >
+        </Border >
+
+        <Border Name = "SignupPage" Grid.Column = "0" Visibility = "Collapsed" Margin = "2,3,2,3" Background = "WhiteSmoke" BorderThickness = "2" BorderBrush = "Gray" >
+            <StackPanel Margin = "20" >
+                <Label VerticalContentAlignment = "Center" FontSize = "18" HorizontalContentAlignment = "Center" >First Name</Label >
+                <TextBox Name="FirstNametxt" Width = "200" Height = "20" TextAlignment = "Center" VerticalAlignment = "Center"></TextBox>
+                <Label VerticalContentAlignment = "Center" FontSize = "18" HorizontalContentAlignment = "Center" >Last Name</Label >
+                <TextBox Name="LastNametxt" Width = "200" Height = "20" TextAlignment = "Center" VerticalAlignment = "Center" />
+                <Label VerticalContentAlignment = "Center" FontSize = "18" HorizontalContentAlignment = "Center" >Personal ID</Label >
+                <TextBox Name="PersonalIDtxt" Width = "200" Height = "20" TextAlignment = "Center" VerticalAlignment = "Center" />
+                <Label VerticalContentAlignment = "Center" FontSize = "18" HorizontalContentAlignment = "Center" >Username</Label >
+                <TextBox Name="SignupUsernametxt" Width = "200" Height = "20" TextAlignment = "Center" VerticalAlignment = "Center" />
+                <Label VerticalContentAlignment = "Center" FontSize = "18" HorizontalContentAlignment = "Center" >Email</Label >
+                <TextBox Name="Emailtxt" Width = "200" Height = "20" TextAlignment = "Center" VerticalAlignment = "Center" />
+                <Label VerticalContentAlignment = "Center" FontSize = "18" HorizontalContentAlignment = "Center" >Password</Label >
+                <PasswordBox Name="SignupPasswordtxt" Width = "200" Height = "20" HorizontalAlignment = "Center" />
+                <Label VerticalContentAlignment = "Center" FontSize = "18" HorizontalContentAlignment = "Center" >re-enter Password</Label >
+                <PasswordBox Name="SignupPasswordtxt2" Width = "200" Height = "20" HorizontalAlignment = "Center" />
+                <Button Name="btnSignupEmployee" Width = "120" Height = "40" FontSize = "15" HorizontalAlignment = "Center" VerticalAlignment = "Center" FontFamily = "Arial" Margin = "40" Click="btnSignupEmployee_Click">Signup</Button >
+            </StackPanel >
+        </Border >
+        <Grid Name="EmployeePanelGrid" Visibility="Collapsed">
+            <Border Name = "EmployeePanel" Grid.Column = "0" Visibility = "Collapsed" Margin = "2,3,2,3" Background = "WhiteSmoke" BorderThickness = "2" BorderBrush = "Gray" >
+                <StackPanel Margin = "20" >
+                    <Button Height = "40" Name = "AddCustomerbtn" Click="AddCustomerbtn_Click">
+                        Add customer
+                    </Button >
+                    <Button Height = "40" Name = "OrderRegisterbtn">
+                        Order registration
+                    </Button >
+                    <Button Height = "40" Name = "OrderReportbtn">
+                        Orders Report
+                    </Button >
+                    <Button Height = "40" Name = "ShowOrderbtn">
+                        Show Order
+                    </Button >
+                </StackPanel >
+            </Border >
+
+            <Border Name = "AddCustomerPage" Grid.Column = "0" Visibility = "Collapsed" Margin = "2,3,2,3" Background = "WhiteSmoke" BorderThickness = "2" BorderBrush = "Gray">
+                <StackPanel Margin = "20" >
+                    <Label VerticalContentAlignment = "Center" FontSize = "18" HorizontalContentAlignment = "Center" >First Name</Label >
+                    <TextBox Name="AddCustomer_FirstNametxt" Width = "200" Height = "20" TextAlignment = "Center" VerticalAlignment = "Center"></TextBox>
+                    <Label VerticalContentAlignment = "Center" FontSize = "18" HorizontalContentAlignment = "Center" >Last Name</Label >
+                    <TextBox Name="AddCustomer_LastNametxt" Width = "200" Height = "20" TextAlignment = "Center" VerticalAlignment = "Center" />
+                    <Label VerticalContentAlignment = "Center" FontSize = "18" HorizontalContentAlignment = "Center" >ID</Label >
+                    <TextBox Name="AddCustomer_IDtxt" Width = "200" Height = "20" TextAlignment = "Center" VerticalAlignment = "Center" />
+                    <Label VerticalContentAlignment = "Center" FontSize = "18" HorizontalContentAlignment = "Center" >Email</Label >
+                    <TextBox Name="AddCustomer_Emailtxt" Width = "200" Height = "20" TextAlignment = "Center" VerticalAlignment = "Center" />
+                    <Label VerticalContentAlignment = "Center" FontSize = "18" HorizontalContentAlignment = "Center" >Phone Number</Label >
+                    <TextBox Name="AddCustomer_Phonetxt" Width = "200" Height = "20" TextAlignment = "Center" VerticalAlignment = "Center" />
+                    <Button Name="btnSignupCustomer" Width = "120" Height = "40" FontSize = "15" HorizontalAlignment = "Center" VerticalAlignment = "Center" FontFamily = "Arial" Margin = "40">Signup</Button >
+                </StackPanel >
+            </Border >
+
+            <Border Name = "RegisterOrderPage" Visibility = "Collapsed" Margin = "2,3,2,3" BorderThickness = "2" BorderBrush = "Gray">
+                <StackPanel >
+                    <Label Margin = "20" FontSize = "23" HorizontalAlignment = "Center" >Enter Customer ID</Label>
+                    <TextBox Width = "200" Height= "50" Name= "RegisterOrder_CustomerIdtxt" FontSize="25"/>
+                    <Button Name="RegisterOrderbtn" FontSize= "23" Margin= "70" Width= "200" Click="RegisterOrderbtn_Click">
+                        Register Order
+                    </Button>
+                </StackPanel>
+            </Border>
+
+            <ScrollViewer Name="ScrollBar" Visibility = "Collapsed" >
+                <Border Name = "RegisterOrderPanel" Visibility="Collapsed" Margin = "2,3,2,3" BorderThickness = "2" BorderBrush = "Gray">
+                    <StackPanel >
+                        <Label Margin = "5" FontSize = "18" HorizontalAlignment = "Center" >Sender Address</Label>
+                        <RichTextBox Width = "850" Height= "50" Name= "SenderAddresstxt" FontSize="18"/>
+                        <Label Margin = "5" FontSize = "18" HorizontalAlignment = "Center" >Reciever Address</Label>
+                        <RichTextBox Width = "850" Height= "50" Name= "RecieverAddresstxt" FontSize="18"/>
+                        <StackPanel Margin="10">
+                            <Label Margin = "0" FontSize = "18" HorizontalAlignment = "Center" >Package Content Type</Label>
+                            <ComboBox Name="PackageContentType" Margin="0" Width = "150" Height= "25" SelectedIndex="0">
+                                <ComboBoxItem >Object</ComboBoxItem>
+                                <ComboBoxItem>DOC</ComboBoxItem>
+                                <ComboBoxItem>Breakable</ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
+                        <DockPanel HorizontalAlignment="Center">
+                            <CheckBox Name="isExpChckBox" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0" />
+                            <Label VerticalAlignment="Center">
+                                Does the package contain expensive staff?
+                            </Label>
+                        </DockPanel>
+                        <Label Margin = "5" FontSize = "18" HorizontalAlignment = "Center" >Package Weight (KG)</Label>
+                        <TextBox Name= "PackageWeighttxt" Width = "70" Height= "30" FontSize="20"/>
+                        <StackPanel Margin="10">
+                            <Label Margin = "0" FontSize = "18" HorizontalAlignment = "Center">Sending Type</Label>
+                            <ComboBox Name="PostType" Margin="0" Width = "150" Height= "25" SelectedIndex="0">
+                                <ComboBoxItem >Normal</ComboBoxItem>
+                                <ComboBoxItem>Express</ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel >
+                        <Label Margin = "5" FontSize = "18" HorizontalAlignment = "Center" >Phone Number</Label>
+                        <TextBox Margin="10" Width = "170" Height= "30" Name= "PhoneNumbertxt" FontSize="25"/>
+                        <Button Name="CalculateCostbtn" FontSize= "23" Margin= "10" Width= "200" Click="CalculateCostbtn_Click">
+                            Calculate cost
+                        </Button>
+                        <Button Name="RegisterProductbtn" FontSize= "23" Margin= "10" Width= "200" Click="RegisterProductbtn_Click">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Text, ElementName=TheTextBox}">
+                                            <Setter Property="IsEnabled" Value="False" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                            Register Product
+                        </Button>
+                    </StackPanel>
+                </Border>
+            </ScrollViewer>
+
+            <Border Name = "GetOrderIDPage" Visibility = "Collapsed" Margin = "2,3,2,3" BorderThickness = "2" BorderBrush = "Gray">
+                <StackPanel >
+                    <Label Margin = "20" FontSize = "23" HorizontalAlignment = "Center" >Enter Order ID</Label>
+                    <TextBox Width = "200" Height= "50" Name= "OrderIdtxt" TextChanged="OrderIdtxt_TextChanged"/>
+                    <Button Name="ShowOrderInfobtn" FontSize= "23" Margin= "70" Width= "200" Click="ShowOrderInfobtn_Click">
+                        Show Information
+                    </Button>
+                </StackPanel>
+            </Border>
+
+        </Grid>
     </Grid>
 </Window>
