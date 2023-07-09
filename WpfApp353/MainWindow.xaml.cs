@@ -185,6 +185,82 @@ namespace WpfApp353
             return textRange.Text;
         }
 
+        private void CalculateCostbtn_Click(object sender, RoutedEventArgs e)
+        {
+            Kind kind1;
+            Post post1;
+            bool IsExp = false;
+            Enum.TryParse(PackageContentType.Text, out kind1);
+            Enum.TryParse(PostType.Text, out post1);
+            if (isExpChckBox.IsChecked == true)
+            {
+                IsExp = true;
+            }
+
+            PackageWeighttxt.BorderBrush = Brushes.Gray;
+            SenderAddresstxt.BorderBrush = Brushes.Gray;
+            RecieverAddresstxt.BorderBrush = Brushes.Gray;
+
+            if (Check_CalculateCostbtn_Validity() == true)
+            {
+                Product p1 = new Product()
+                {
+                    sender = FoundCust_Order_reg,
+                    Saddress = StringFromRichTextBox(SenderAddresstxt),
+                    Daddress = StringFromRichTextBox(RecieverAddresstxt),
+                    kind = kind1,
+                    expensive = IsExp,
+                    Weight = double.Parse(PackageWeighttxt.Text),
+                    post = post1,
+                    phone_number = PhoneNumbertxt.Text,
+                    status = Status.Registered,
+                    ID = productDataAccess.GetID(),
+                };
+                MessageBox.Show($"Post Cost is : {p1.Calc_Price()}", "Post Cost!", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.Yes);
+                RegisterProductbtn.IsEnabled = true;
+            }
+        }
+
+        private bool Check_CalculateCostbtn_Validity()
+        {
+            bool isValid = true;
+            Kind kind1;
+            Enum.TryParse(PackageContentType.Text, out kind1);
+            Customer sender = FoundCust_Order_reg;
+            string Saddress = StringFromRichTextBox(SenderAddresstxt);
+            string Daddress = StringFromRichTextBox(RecieverAddresstxt);
+            bool IsExp = false;
+            if (isExpChckBox.IsChecked == true)
+            {
+                IsExp = true;
+            }
+            bool expensive = IsExp;
+            string Weight = PackageWeighttxt.Text;
+            Post post1;
+            Enum.TryParse(PostType.Text, out post1);
+            string phone_number = PhoneNumbertxt.Text;
+
+            if (Saddress == "\r\n")
+            {
+                isValid = false;
+                MessageBox.Show("Sender Address is not valid!");
+                SenderAddresstxt.BorderBrush = Brushes.Red;
+            }
+            else if (Daddress == "\r\n")
+            {
+                isValid = false;
+                MessageBox.Show("Reciever Address is not valid!");
+                RecieverAddresstxt.BorderBrush = Brushes.Red;
+            }
+            else if (string.IsNullOrEmpty(Weight) || !double.TryParse(Weight, out double p))
+            {
+                isValid = false;
+                MessageBox.Show("Weight is not valid!");
+                PackageWeighttxt.BorderBrush = Brushes.Red;
+            }
+            return isValid;
+        }
+
         private void RegisterProductbtn_Click(object sender, RoutedEventArgs e)
         {
             double price = Products[Products.Count - 1].Calc_Price();
@@ -223,5 +299,7 @@ namespace WpfApp353
                 MessageBox.Show("Your Wallet cash is not enough!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.Yes);
             }
         }
+
+        
     }
 }
