@@ -740,5 +740,7 @@ namespace WpfApp353
             product.feedback = feedbacktxt.Text;
             MessageBox.Show("Feedback Submited!");
         }
+
+
     }
 }

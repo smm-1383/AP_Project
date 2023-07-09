@@ -361,7 +361,15 @@
                         Submit
                     </Button>
                 </StackPanel>
+            </StackPanel>
+        </Border>
 
+        <Border Name="ChgPanel" Visibility = "Collapsed" Margin = "2,3,2,3" BorderThickness = "2" BorderBrush = "Gray">
+            <StackPanel>
+                <Label Margin = "20" FontSize = "23" HorizontalAlignment = "Center" >Enter New Username</Label>
+                <TextBox Width = "200" Height= "50" Name= "NewUsernametxt" TextChanged="OrderIdtxt_TextChanged"/>
+                <Label Margin = "20" FontSize = "23" HorizontalAlignment = "Center" >Enter New Password</Label>
+                <TextBox Width = "200" Height= "50" Name= "NewPasstxt" TextChanged="OrderIdtxt_TextChanged"/>
             </StackPanel>
         </Border>
     </Grid>
