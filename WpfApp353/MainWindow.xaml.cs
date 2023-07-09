@@ -175,5 +175,53 @@ namespace WpfApp353
                 EmployeePanel.Visibility = Visibility.Collapsed;
             }
         }
+
+        string StringFromRichTextBox(RichTextBox rtb)
+        {
+            TextRange textRange = new TextRange(
+                rtb.Document.ContentStart,
+                rtb.Document.ContentEnd
+            );
+            return textRange.Text;
+        }
+
+        private void RegisterProductbtn_Click(object sender, RoutedEventArgs e)
+        {
+            double price = Products[Products.Count - 1].Calc_Price();
+            Kind kind1;
+            Post post1;
+            bool IsExp = false;
+            Enum.TryParse(PackageContentType.Text, out kind1);
+            Enum.TryParse(PostType.Text, out post1);
+            if (isExpChckBox.IsChecked == true)
+            {
+                IsExp = true;
+            }
+            if (FoundCust_Order_reg.Wallet >= price)
+            {
+                FoundCust_Order_reg.Wallet -= price;
+                Product p1 = new Product()
+                {
+                    sender = FoundCust_Order_reg,
+                    Saddress = StringFromRichTextBox(SenderAddresstxt),
+                    Daddress = StringFromRichTextBox(RecieverAddresstxt),
+                    kind = kind1,
+                    expensive = IsExp,
+                    Weight = double.Parse(PackageWeighttxt.Text),
+                    post = post1,
+                    phone_number = PhoneNumbertxt.Text,
+                    status = Status.Registered,
+                    ID = productDataAccess.GetID(),
+                };
+                p1.Calc_Price();
+                Products.Add(p1);
+                MessageBox.Show("Product Registered in System!", "Done!", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.Yes);
+                //***Dump();
+            }
+            else
+            {
+                MessageBox.Show("Your Wallet cash is not enough!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.Yes);
+            }
+        }
     }
 }

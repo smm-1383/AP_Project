@@ -89,6 +89,58 @@
                     </Button>
                 </StackPanel>
             </Border>
+
+            <ScrollViewer Name="ScrollBar" Visibility = "Collapsed" >
+                <Border Name = "RegisterOrderPanel" Visibility="Collapsed" Margin = "2,3,2,3" BorderThickness = "2" BorderBrush = "Gray">
+                    <StackPanel >
+                        <Label Margin = "5" FontSize = "18" HorizontalAlignment = "Center" >Sender Address</Label>
+                        <RichTextBox Width = "850" Height= "50" Name= "SenderAddresstxt" FontSize="18"/>
+                        <Label Margin = "5" FontSize = "18" HorizontalAlignment = "Center" >Reciever Address</Label>
+                        <RichTextBox Width = "850" Height= "50" Name= "RecieverAddresstxt" FontSize="18"/>
+                        <StackPanel Margin="10">
+                            <Label Margin = "0" FontSize = "18" HorizontalAlignment = "Center" >Package Content Type</Label>
+                            <ComboBox Name="PackageContentType" Margin="0" Width = "150" Height= "25" SelectedIndex="0">
+                                <ComboBoxItem >Object</ComboBoxItem>
+                                <ComboBoxItem>DOC</ComboBoxItem>
+                                <ComboBoxItem>Breakable</ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
+                        <DockPanel HorizontalAlignment="Center">
+                            <CheckBox Name="isExpChckBox" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0" />
+                            <Label VerticalAlignment="Center">
+                                Does the package contain expensive staff?
+                            </Label>
+                        </DockPanel>
+                        <Label Margin = "5" FontSize = "18" HorizontalAlignment = "Center" >Package Weight (KG)</Label>
+                        <TextBox Name= "PackageWeighttxt" Width = "70" Height= "30" FontSize="20"/>
+                        <StackPanel Margin="10">
+                            <Label Margin = "0" FontSize = "18" HorizontalAlignment = "Center">Sending Type</Label>
+                            <ComboBox Name="PostType" Margin="0" Width = "150" Height= "25" SelectedIndex="0">
+                                <ComboBoxItem >Normal</ComboBoxItem>
+                                <ComboBoxItem>Express</ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel >
+                        <Label Margin = "5" FontSize = "18" HorizontalAlignment = "Center" >Phone Number</Label>
+                        <TextBox Margin="10" Width = "170" Height= "30" Name= "PhoneNumbertxt" FontSize="25"/>
+                        <Button Name="CalculateCostbtn" FontSize= "23" Margin= "10" Width= "200" Click="CalculateCostbtn_Click">
+                            Calculate cost
+                        </Button>
+                        <Button Name="RegisterProductbtn" FontSize= "23" Margin= "10" Width= "200" Click="RegisterProductbtn_Click">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Text, ElementName=TheTextBox}">
+                                            <Setter Property="IsEnabled" Value="False" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                            Register Product
+                        </Button>
+                    </StackPanel>
+                </Border>
+            </ScrollViewer>
         </Grid>
     </Grid>
 </Window>
