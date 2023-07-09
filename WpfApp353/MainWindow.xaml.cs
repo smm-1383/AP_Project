@@ -741,6 +741,18 @@ namespace WpfApp353
             MessageBox.Show("Feedback Submited!");
         }
 
-
+        private void CustomerMaiPanel_Click(object sender, RoutedEventArgs e)
+        {
+            CustomerPanel.Visibility = Visibility.Visible;
+            feedbackGrid.Visibility = Visibility.Collapsed;
+            GetOrderIDPage_cust.Visibility = Visibility.Collapsed;
+            ShowOrderPage_cust.Visibility = Visibility.Collapsed;
+            OrderReportPage_cust.Visibility = Visibility.Collapsed;
+            WalletPage.Visibility = Visibility.Collapsed;
+            MainPage.Visibility = Visibility.Collapsed;
+            GetOrderIDPage.Visibility = Visibility.Collapsed;
+            SignupPage.Visibility = Visibility.Collapsed;
+            EmployeePanel.Visibility = Visibility.Collapsed;
+        }
     }
 }
