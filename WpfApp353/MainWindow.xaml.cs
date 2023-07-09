@@ -482,5 +482,47 @@ namespace WpfApp353
 			WalletPage.Visibility = Visibility.Collapsed;
 			CurrentEmployee = null;
 		}
+		private void Walletbtn_Click(object sender, RoutedEventArgs e)
+		{
+			CustomerPanelGrid.Visibility = Visibility.Visible;
+			WalletPage.Visibility = Visibility.Visible;
+			MainPage.Visibility = Visibility.Collapsed;
+			GetOrderIDPage.Visibility = Visibility.Collapsed;
+			SignupPage.Visibility = Visibility.Collapsed;
+			EmployeePanel.Visibility = Visibility.Collapsed;
+			CustomerPanel.Visibility = Visibility.Collapsed;
+			CurrentAmountlbl.Content = found_cust.Wallet.ToString();
+		}
+		private void chngbtn_Click(object sender, RoutedEventArgs e)
+		{
+			ChgPanel.Visibility = Visibility.Visible;
+			GetOrderIDPage.Visibility = Visibility.Collapsed;
+			CustomerPanel.Visibility = Visibility.Collapsed;
+			MainPage.Visibility = Visibility.Collapsed;
+			SignupPage.Visibility = Visibility.Collapsed;
+			EmployeePanel.Visibility = Visibility.Collapsed;
+			ShowOrderPage_cust.Visibility = Visibility.Collapsed;
+		}
+		private void OrderReportbtn_cust_Click(object sender, RoutedEventArgs e)
+		{
+			CustomerPanelGrid.Visibility = Visibility.Visible;
+			OrderReportPage_cust.Visibility = Visibility.Visible;
+			WalletPage.Visibility = Visibility.Collapsed;
+			MainPage.Visibility = Visibility.Collapsed;
+			GetOrderIDPage.Visibility = Visibility.Collapsed;
+			SignupPage.Visibility = Visibility.Collapsed;
+			EmployeePanel.Visibility = Visibility.Collapsed;
+			CustomerPanel.Visibility = Visibility.Collapsed;
+		}
+		private void ShowOrderbtn_cust_Click(object sender, RoutedEventArgs e)
+		{
+			GetOrderIDPage_cust.Visibility = Visibility.Visible;
+			ShowOrderPage_cust.Visibility = Visibility.Collapsed;
+			GetOrderIDPage.Visibility = Visibility.Collapsed;
+			CustomerPanel.Visibility = Visibility.Collapsed;
+			MainPage.Visibility = Visibility.Collapsed;
+			SignupPage.Visibility = Visibility.Collapsed;
+			EmployeePanel.Visibility = Visibility.Collapsed;
+		}
 	}
 }

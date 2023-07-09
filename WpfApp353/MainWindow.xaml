@@ -226,5 +226,27 @@
                 Login Page
             </Button>
         </Grid>
+
+
+
+
+        <Grid Name="CustomerPanelGrid" Visibility="Collapsed">
+            <Border Name = "CustomerPanel" Grid.Column= "0" Visibility= "Collapsed" Margin= "2,3,2,3" Background= "WhiteSmoke" BorderThickness= "2" BorderBrush= "Gray" >
+                <StackPanel Margin= "20" >
+                    <Button Height= "40" Name= "Walletbtn" Click="Walletbtn_Click">
+                        Wallet
+                    </Button >
+                    <Button Height= "40" Name= "chngbtn" Click="chngbtn_Click">
+                        Change Username Or Password
+                    </Button>
+                    <Button Height = "40" Name= "OrderReportbtn_cust" Click="OrderReportbtn_cust_Click">
+                        Orders Report
+                    </Button>
+                    <Button Height = "40" Name= "ShowOrderbtn_cust" Click="ShowOrderbtn_cust_Click">
+                        Show Order
+                    </Button>
+                </StackPanel>
+            </Border>
+        </Grid>
     </Grid>
 </Window>
