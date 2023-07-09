@@ -448,5 +448,39 @@ namespace WpfApp353
 		{
 
 		}
+		private void EmployeeMainPanel_Click(object sender, RoutedEventArgs e)
+		{
+			EmployeePanelGrid.Visibility = Visibility.Visible;
+			EmployeePanel.Visibility = Visibility.Visible;
+			GetOrderIDPage.Visibility = Visibility.Collapsed;
+			ShowOrderPage.Visibility = Visibility.Collapsed;
+			OrderReportPage.Visibility = Visibility.Collapsed;
+			RegisterOrderPanel.Visibility = Visibility.Collapsed;
+			GetOrderIDPage.Visibility = Visibility.Collapsed;
+			MainPage.Visibility = Visibility.Collapsed;
+			SignupPage.Visibility = Visibility.Collapsed;
+			RegisterOrderPage.Visibility = Visibility.Collapsed;
+			AddCustomerPage.Visibility = Visibility.Collapsed;
+			ScrollBar.Visibility = Visibility.Collapsed;
+		}
+		private void LoginPagebtn_cust_Click(object sender, RoutedEventArgs e)
+		{
+			MainPage.Visibility = Visibility.Visible;
+			CustomerPanel.Visibility = Visibility.Collapsed;
+			EmployeePanel.Visibility = Visibility.Collapsed;
+			EmployeePanelGrid.Visibility = Visibility.Collapsed;
+			CustomerPanelGrid.Visibility = Visibility.Collapsed;
+			FilteredItemsPanel.Visibility = Visibility.Collapsed;
+			GetOrderIDPage.Visibility = Visibility.Collapsed;
+			ShowOrderPage.Visibility = Visibility.Collapsed;
+			OrderReportPage.Visibility = Visibility.Collapsed;
+			RegisterOrderPanel.Visibility = Visibility.Collapsed;
+			SignupPage.Visibility = Visibility.Collapsed;
+			AddCustomerPage.Visibility = Visibility.Collapsed;
+			ScrollBar.Visibility = Visibility.Collapsed;
+			RegisterOrderPage.Visibility = Visibility.Collapsed;
+			WalletPage.Visibility = Visibility.Collapsed;
+			CurrentEmployee = null;
+		}
 	}
 }

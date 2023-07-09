@@ -219,7 +219,12 @@
                     </Border>
                 </Grid>
             </Border>
-           
+            <Button Name="EmployeeMainPanel" Margin="20" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="70" Height="25" Click="EmployeeMainPanel_Click">
+                Main Panel
+            </Button>
+            <Button Name="LoginPagebtn_emp" Margin="100,20,20,20" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="70" Height="25" Click="LoginPagebtn_cust_Click">
+                Login Page
+            </Button>
         </Grid>
     </Grid>
 </Window>
