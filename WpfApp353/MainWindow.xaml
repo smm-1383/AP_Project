@@ -141,6 +141,17 @@
                     </StackPanel>
                 </Border>
             </ScrollViewer>
+
+            <Border Name = "GetOrderIDPage" Visibility = "Collapsed" Margin = "2,3,2,3" BorderThickness = "2" BorderBrush = "Gray">
+                <StackPanel >
+                    <Label Margin = "20" FontSize = "23" HorizontalAlignment = "Center" >Enter Order ID</Label>
+                    <TextBox Width = "200" Height= "50" Name= "OrderIdtxt" TextChanged="OrderIdtxt_TextChanged"/>
+                    <Button Name="ShowOrderInfobtn" FontSize= "23" Margin= "70" Width= "200" Click="ShowOrderInfobtn_Click">
+                        Show Information
+                    </Button>
+                </StackPanel>
+            </Border>
+
         </Grid>
     </Grid>
 </Window>

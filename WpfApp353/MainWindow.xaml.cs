@@ -299,7 +299,26 @@ namespace WpfApp353
                 MessageBox.Show("Your Wallet cash is not enough!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.Yes);
             }
         }
+		private void OrderIdtxt_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			if (OrderIdtxt.Text.Length > (ProductDataAccess.products.Any() ? ProductDataAccess.products.Select(x => x.ID).Max().ToString().Length : 1))
+			{
+				OrderIdtxt.Text = OrderIdtxt.Text.Remove(OrderIdtxt.Text.Length - 1);
+			}
+			if (!Regex.IsMatch(OrderIdtxt.Text, "^\\d*$"))
+			{
+				if (OrderIdtxt.Text.Length > 1)
+				{
+					OrderIdtxt.Text = Regex.Match(OrderIdtxt.Text, "\\d+").Value;
+				}
+				else
+				{
+					OrderIdtxt.Text = "";
+				}
+			}
+			OrderIdtxt.SelectionStart = OrderIdtxt.Text.Length;
+			OrderIdtxt.SelectionLength = 0;
+		}
 
-        
-    }
+	}
 }
