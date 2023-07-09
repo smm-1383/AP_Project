@@ -180,6 +180,46 @@
                 </StackPanel>
             </Border>
 
+            <Border Name = "OrderReportPage" Visibility= "Collapsed" Margin = "2,3,2,3" BorderThickness = "2" BorderBrush = "Gray">
+                <Grid>
+                    <Border Name= "FilteringPane6l" Margin= "20" BorderThickness= "4" BorderBrush= "WhiteSmoke" HorizontalAlignment= "Right" Width= "200" >
+                        <StackPanel Margin= "3" >
+                            <Label VerticalContentAlignment= "Center" FontSize= "18" HorizontalContentAlignment= "Center" >User id</Label>
+                            <TextBox Name="UserIdfilteredtxt" Width = "150" Height= "20" TextAlignment= "Center" VerticalAlignment= "Center" />
+                            <Label VerticalContentAlignment= "Center" FontSize= "18" HorizontalContentAlignment= "Center" >Package type</Label>
+                            <ComboBox Name="Paktypefilteredcombo" Width = "150" Height= "25" >
+                                <ComboBoxItem>Registered</ComboBoxItem >
+                                <ComboBoxItem>Ready To Send</ComboBoxItem>
+                                <ComboBoxItem>Sending</ComboBoxItem>
+                                <ComboBoxItem>Delivered</ComboBoxItem>
+                            </ComboBox>
+                            <Label VerticalContentAlignment = "Center" FontSize= "18" HorizontalContentAlignment= "Center" >Price</Label >
+                            <TextBox Width= "150" Height= "20" TextAlignment= "Center" VerticalAlignment= "Center" Name="Pricefilteredtxt"/>
+                            <Label VerticalContentAlignment= "Center" FontSize= "18" HorizontalContentAlignment= "Center" >Weight</Label >
+                            <TextBox Name="WeightFilteredtxt" Width= "150" Height= "20" TextAlignment= "Center" VerticalAlignment= "Center" />
+                            <Label VerticalContentAlignment= "Center" FontSize= "18" HorizontalContentAlignment= "Center" >Posting Type</Label>
+                            <ComboBox Name="postypefilteredcombo" Width = "150" Height= "25" >
+                                <ComboBoxItem >Pishtaz</ComboBoxItem >
+                                <ComboBoxItem IsSelected= "True" >Normal</ComboBoxItem >
+                            </ComboBox >
+                            <Button Margin= "30" Name="Search_Filteredbtn" Click="Search_Filteredbtn_Click">
+                                Search
+                            </Button >
+                        </StackPanel >
+                    </Border >
+
+                    <Border Name= "FilteredItemsPanel" Margin= "20" BorderThickness= "4" BorderBrush= "WhiteSmoke" Width= "825" HorizontalAlignment= "Left" >
+
+                        <StackPanel>
+                            <Label FontSize= "34" Margin= "80" >This is Filtered Items Panel</Label>
+                            <DataGrid Margin="5" Name="EmployeesGrid" ColumnWidth="*" CanUserAddRows="False" MinColumnWidth="100" CanUserResizeRows="True" SelectionChanged="EmployeesGrid_SelectionChanged" IsReadOnly="True">
+
+                            </DataGrid>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </Border>
+           
         </Grid>
     </Grid>
 </Window>

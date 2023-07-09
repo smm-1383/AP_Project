@@ -19,6 +19,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DataAccess;
 using DataAccess.Models;
+using System.IO;
 
 namespace WpfApp353
 {
@@ -28,6 +29,7 @@ namespace WpfApp353
 	/// </summary>
 	public partial class MainWindow:Window
 	{
+		string address = string.Join("\\", Environment.CurrentDirectory.Split("\\").SkipLast(4)) + @"\DataAccess";
 		Customer found_cust;
 		Customer FoundCust_Order_reg;
 
@@ -407,6 +409,44 @@ namespace WpfApp353
 					break;
 			}
 			//***Dump();
+		}
+		private void Search_Filteredbtn_Click(object sender, RoutedEventArgs e)
+		{
+			var f = Products.Where(x => true);
+			Status s;
+			Post p;
+
+			if (UserIdfilteredtxt.Text != "")
+			{
+				f = f.Where(x => x.ID == int.Parse(UserIdfilteredtxt.Text));
+			}
+			if (WeightFilteredtxt.Text != "")
+			{
+				f = f.Where(x => x.Weight <= double.Parse(WeightFilteredtxt.Text) + 1 && x.Weight >= double.Parse(WeightFilteredtxt.Text) - 1);
+			}
+			if (Pricefilteredtxt.Text != "")
+			{
+				f = f.Where(x => x.Price <= double.Parse(Pricefilteredtxt.Text) + 10000 && x.Price >= double.Parse(Pricefilteredtxt.Text) - 10000);
+			}
+			if (Enum.TryParse(Paktypefilteredcombo.Text, out s))
+			{
+				f = f.Where(x => x.status == s);
+			}
+			if (Enum.TryParse(postypefilteredcombo.Text, out p))
+			{
+				f = f.Where(x => x.post == p);
+			}
+			string t = "ID, SenderFullName, SAddress, DAddress, kind, IsExpensive?, Weight, Post, Phone, Status, Price, feedback\n";
+			foreach (var pro in f)
+			{
+				t += pro.ToString().Replace("\n", " ").Replace("\r", " ") + "\n";
+			}
+			File.WriteAllText(address + "\\Filtered_Search.csv", t);
+			MessageBox.Show("Sucess", "The filtered search result is in csv file.", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.Yes);
+		}
+		private void EmployeesGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+
 		}
 	}
 }
