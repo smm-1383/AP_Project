@@ -248,5 +248,54 @@
                 </StackPanel>
             </Border>
         </Grid>
+        
+        <Grid Name="WalletPage" Visibility= "Collapsed" >
+            <Border Name= "ChargePanel" Margin= "20" BorderThickness= "4" BorderBrush= "WhiteSmoke" HorizontalAlignment= "Right" Width= "200" >
+                <StackPanel Margin= "3" >
+                    <Label HorizontalAlignment="Center" Margin="0,20,0,0"  FontSize="20">
+                        Card Number
+                    </Label>
+                    <TextBox Width="140" HorizontalAlignment="Center" Margin="0,0,0,0" Name="Cardtxt" TextChanged="Cardtxt_TextChanged"/>
+                    <Label HorizontalAlignment="Center" Margin="35,20,20,5" FontSize="20">
+                        Expire date
+                    </Label>
+                    <DockPanel >
+                        <Label HorizontalAlignment="Left" Margin="20,0,0,0" FontSize="20">
+                            Y
+                        </Label>
+                        <TextBox Width="32" Height="30" HorizontalAlignment="Left" Margin="5,0,0,0" Name="Yeartxt" TextChanged="Yeartxt_TextChanged"/>
+                        <Label HorizontalAlignment="Left" Margin="20,0,0,0" FontSize="20">
+                            M
+                        </Label>
+                        <TextBox Width="30" Height="30" HorizontalAlignment="Left" Margin="10,0,0,0" Name="Monthtxt" TextChanged="Monthtxt_TextChanged"/>
+                    </DockPanel>
+                    <Label HorizontalAlignment="Center" Margin="0,20,0,0" FontSize="20">
+                        CVV2
+                    </Label>
+                    <TextBox Width="140" HorizontalAlignment="Center" Margin="0,0,0,0" Name="CVVtxt" TextChanged="CVVtxt_TextChanged"/>
+                    <Label HorizontalAlignment="Center" Margin="0,20,0,0" FontSize="20">
+                        Amount
+                    </Label>
+                    <TextBox Width="140" HorizontalAlignment="Center" Margin="0,0,0,0" Name="Chargetxt" TextChanged="Chargetxt_TextChanged"/>
+                    <Button Width="80" HorizontalAlignment="Center" Name="Chargetbtn" Margin="40" Click="Chargebtn_Click">
+                        Charge
+                    </Button>
+                </StackPanel>
+            </Border >
+
+            <Border Margin= "20" BorderThickness= "4" BorderBrush= "WhiteSmoke" Width= "825" HorizontalAlignment= "Left" >
+                <StackPanel>
+                    <DockPanel Margin="20">
+                        <Label FontSize="30">
+                            Wallet:
+                        </Label>
+                        <Label Name="CurrentAmountlbl" Content="---" FontSize="30" Margin="10,0,0,0">
+
+                        </Label>
+                    </DockPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+
     </Grid>
 </Window>

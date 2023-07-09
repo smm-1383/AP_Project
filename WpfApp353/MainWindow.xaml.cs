@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Net.Mail;
-using System.Net;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -17,9 +14,24 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 using DataAccess;
 using DataAccess.Models;
+using iTextSharp;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.Windows.Media.Media3D;
+using System.Diagnostics;
+using System.Windows.Controls.Primitives;
 using System.IO;
+using Org.BouncyCastle.Utilities.Collections;
+using System.Reflection;
+using System.Collections.ObjectModel;
+using System.Net.Mail;
+using System.Text.Json;
+using System.Net;
+using System.Text.Json.Serialization;
+using System.DirectoryServices.ActiveDirectory;
 
 namespace WpfApp353
 {
@@ -523,6 +535,179 @@ namespace WpfApp353
 			MainPage.Visibility = Visibility.Collapsed;
 			SignupPage.Visibility = Visibility.Collapsed;
 			EmployeePanel.Visibility = Visibility.Collapsed;
+		}
+		private void Cardtxt_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			if (!Regex.IsMatch(Cardtxt.Text, "^\\d*$"))
+			{
+				if (Cardtxt.Text.Length > 1)
+				{
+					Cardtxt.Text = Regex.Match(Cardtxt.Text, "\\d+").Value;
+				}
+				else
+				{
+					Cardtxt.Text = "";
+				}
+			}
+			Cardtxt.SelectionStart = Cardtxt.Text.Length;
+			Cardtxt.SelectionLength = 0;
+		}
+
+		private void Yeartxt_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			if (Yeartxt.Text.Length > 4)
+			{
+				Yeartxt.Text = Yeartxt.Text.Remove(Yeartxt.Text.Length - 1);
+			}
+			if (!Regex.IsMatch(Yeartxt.Text, "^\\d*$"))
+			{
+				if (Yeartxt.Text.Length > 1)
+				{
+					Yeartxt.Text = Regex.Match(Yeartxt.Text, "\\d+").Value;
+				}
+				else
+				{
+					Yeartxt.Text = "";
+				}
+			}
+			Yeartxt.SelectionStart = Yeartxt.Text.Length;
+			Yeartxt.SelectionLength = 0;
+		}
+
+		private void Monthtxt_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			if (Monthtxt.Text.Length > 2)
+			{
+				Monthtxt.Text = Monthtxt.Text.Remove(Monthtxt.Text.Length - 1);
+			}
+			if (!Regex.IsMatch(Monthtxt.Text, "^\\d*$"))
+			{
+				if (Monthtxt.Text.Length > 1)
+				{
+					Monthtxt.Text = Regex.Match(Monthtxt.Text, "\\d+").Value;
+				}
+				else
+				{
+					Monthtxt.Text = "";
+				}
+			}
+			Monthtxt.SelectionStart = Monthtxt.Text.Length;
+			Monthtxt.SelectionLength = 0;
+		}
+
+		private void CVVtxt_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			if (CVVtxt.Text.Length > 4)
+			{
+				CVVtxt.Text = CVVtxt.Text.Remove(CVVtxt.Text.Length - 1);
+			}
+			if (!Regex.IsMatch(CVVtxt.Text, "^\\d*$"))
+			{
+				if (CVVtxt.Text.Length > 1)
+				{
+					CVVtxt.Text = Regex.Match(CVVtxt.Text, "\\d+").Value;
+				}
+				else
+				{
+					CVVtxt.Text = "";
+				}
+			}
+			CVVtxt.SelectionStart = CVVtxt.Text.Length;
+			CVVtxt.SelectionLength = 0;
+		}
+
+		private void Chargetxt_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			if (!Regex.IsMatch(Chargetxt.Text, "^\\d*\\.?\\d*$"))
+			{
+				if (Chargetxt.Text.Length > 1)
+				{
+					Chargetxt.Text = Regex.Match(Chargetxt.Text, "\\d+\\.?\\d+").Value;
+				}
+				else
+				{
+					Chargetxt.Text = "";
+				}
+			}
+			Chargetxt.SelectionStart = Chargetxt.Text.Length;
+			Chargetxt.SelectionLength = 0;
+		}
+		private static bool LUHN(string Card)
+		{
+			int s = 0, f;
+			for (int i = Card.Length - 1; i >= 0; i--)
+			{
+				f = int.Parse(Card[i].ToString()) * (i % 2 + 1);
+				if (f > 9)
+					f -= 9;
+				s += f;
+			}
+			if (s % 10 != 0)
+				return false;
+			return true;
+		}
+		private static bool Date(string Y, string M)
+		{
+			try
+			{
+				if (int.Parse(M) > 12 || int.Parse(M) < 0 || int.Parse(Y) <= 2023)
+				{
+					return false;
+				}
+			}
+			catch
+			{
+				return false;
+			}
+			return true;
+		}
+		private void addPDF(Customer customer, double charge_amount)
+		{
+			Document doctum = new Document(PageSize.A6, 10, 10, 42, 35);
+			PdfWriter writer = PdfWriter.GetInstance(doctum, new FileStream(address + $@"\{customer.FirstName}_{customer.LastName}_bill.PDF", FileMode.Create));
+			doctum.Open();
+			doctum.SetMargins(10, 10, 10, 10);
+			iTextSharp.text.Paragraph paragraph2 = new iTextSharp.text.Paragraph($"Wallet increase bill\n\nUser ( {customer.FirstName} {customer.LastName} )\n{DateTime.Now}\nYou charged your account for {charge_amount} $\n" +
+				$"Your current wallet is : {customer.Wallet}");
+			doctum.Add(paragraph2);
+			doctum.Close();
+		}
+		private void Chargebtn_Click(object sender, RoutedEventArgs e)
+		{
+			if (Regex.IsMatch(Cardtxt.Text, "^\\d{10,17}$") && !LUHN(Cardtxt.Text))
+			{
+				MessageBox.Show("CardNumber Format is not correct!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.Yes);
+				return;
+			}
+			else if (!Date(Yeartxt.Text, Monthtxt.Text))
+			{
+				MessageBoxResult result = MessageBox.Show("Expiration Date Format is not correct!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.Yes);
+				return;
+			}
+			else if (!Regex.IsMatch(CVVtxt.Text, "^\\d\\d\\d\\d?$"))
+			{
+				MessageBoxResult result = MessageBox.Show("CVV Format is not correct!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.Yes);
+				return;
+			}
+			else if (!Regex.IsMatch(Chargetxt.Text, "^\\d+\\.?\\d*$"))
+			{
+				MessageBoxResult result = MessageBox.Show("Charge Amount Format is not correct!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.Yes);
+				return;
+			}
+			found_cust.Wallet += double.Parse(Chargetxt.Text);
+			CurrentAmountlbl.Content = found_cust.Wallet.ToString();
+			//***Dump();
+			MessageBox.Show("Your Charge updated successfully.", "Done!", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.Yes);
+			MessageBoxResult bill_result = MessageBox.Show("Do you want your Bill in PDF?", "Bill?!", MessageBoxButton.YesNo, MessageBoxImage.Information, MessageBoxResult.Yes);
+			switch (bill_result)
+			{
+				case MessageBoxResult.Yes:
+					addPDF(found_cust, double.Parse(Chargetxt.Text));
+					//***ShowPDF(found_cust);
+					break;
+				case MessageBoxResult.No:
+					break;
+			}
 		}
 	}
 }
